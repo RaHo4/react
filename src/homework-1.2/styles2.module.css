@@ -1,0 +1,37 @@
+h2 {
+    display:flex;
+    border : 1px solid black;
+    height: 100px;
+    margin: 0;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.statistics {
+    display: flex;
+    border: 1px solid green;
+    flex-flow: column;
+    margin: 0 auto;
+    margin-top: 100px;
+    max-width: fit-content;
+    justify-content: space-around;
+}
+
+.stat_list {
+    display: flex;
+    flex-flow: row;
+    border: 1px solid black;
+    margin: 0;
+    padding: 0;
+    justify-content: space-between;
+}
+
+.item {
+    border: 1px solid red;
+    display:flex;
+    flex-flow:column;
+    flex: 1 1 0px;
+    min-width: 40px;
+    text-align: center;
+}

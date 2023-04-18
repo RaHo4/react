@@ -1,0 +1,45 @@
+.profile {
+    margin: 0 auto;
+    margin-top: 10em;
+    border: 3px solid black;
+    width: fit-content;
+}
+
+.description {
+    display:block;
+    text-align: center;
+}
+
+.avatar {
+    padding-top: 1.5em;
+    height: 150px;
+    width: 150px;
+    border-radius: 100%;
+}
+
+.stats {
+    display:flex;
+    align-items: flex-end;
+    background-color: darkgray;
+    padding: 0;
+    padding-block: 0;
+    margin: 0;
+}
+
+.stats > li {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 90px;
+    flex-flow: column;
+    justify-content: center;
+    padding-block: 5px;
+    height: match-parent;
+    border: 1px solid black;
+}
+.stats > li > span {
+    display: flex;
+    justify-content : center;
+    text-align: center;
+    padding-block: 5px;
+}

@@ -1,0 +1,30 @@
+.line {
+  background-color: red;
+  width: 100vw;
+  height: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.darts__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+
+
+.ball {
+    animation: spin 1000ms;
+    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

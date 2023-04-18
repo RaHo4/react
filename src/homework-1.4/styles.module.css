@@ -1,0 +1,21 @@
+.TransactionHistory {
+    margin: 0 auto;
+    margin-top: 5rem;
+    width: 60%;
+    text-align: center;
+    border: 3px solid black;
+}
+
+.TransactionHistory > thead {
+    background-color: aqua;
+    height: 10px;
+}
+
+.TransactionHistory td {
+    border: 1px solid black;
+}
+
+.TransactionHistory tr:nth-child(2n+2) {
+    background-color: blanchedalmond;
+}
+
