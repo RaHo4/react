@@ -33,6 +33,8 @@ export function EditModal({ changeProducts }) {
       case "currency":
         setCurrency(value);
         break;
+      default:
+        throw new Error("edit.js");
     }
   };
 

@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import styles from "./styles.module.css";
 import tennisBall from "./tennis ball.png";
 
@@ -23,13 +23,11 @@ function App() {
   const dragBall = (event) => {
     const a = ball.current.getBoundingClientRect();
     const b = darts.current.getBoundingClientRect();
-    const c = darts.current.getBoundingClientRect();
 
     const x = event.clientX - a.width;
     let y = event.clientY - a.height;
 
-    if (y > b.top + b.height + a.height)
-      y = b.top + b.height + a.height;
+    if (y > b.top + b.height + a.height) y = b.top + b.height + a.height;
 
     setBallStyle({
       ...ballStyle,
@@ -53,6 +51,7 @@ function App() {
     <>
       <div className={styles.darts__wrapper}>
         <img
+          alt=""
           ref={darts}
           src="https://cdn.pixabay.com/photo/2016/08/23/10/48/dart-board-1614051_1280.png"
           height="350px"
@@ -64,7 +63,7 @@ function App() {
 
       <div className={styles.line} ref={line}>
         <img
-          //   className={styles.ball}
+          alt=""
           src={tennisBall}
           ref={ball}
           height="100px"

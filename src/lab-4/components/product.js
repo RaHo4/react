@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-concat */
 import editImage from "../images/Daco_4390267.png";
 import trashCan from "../images/Daco_4874208.png";
 import styles from "../styles.module.css";
@@ -12,47 +13,44 @@ function compare(prevProps, nextProps) {
   return 0;
 }
 
-function throttle(callback, time) {
-  let timer = null;
-  return () => {
-    if (!timer)
-      timer = setTimeout(() => {
-        callback();
-        timer = null;
-      }, time);
-  };
-}
+// function throttle(callback, time) {
+//   let timer = null;
+//   return () => {
+//     if (!timer)
+//       timer = setTimeout(() => {
+//         callback();
+//         timer = null;
+//       }, time);
+//   };
+// }
 
 export default memo(function Product(props) {
   const dispatch = useDispatch();
   const productCard = useRef(null);
   const { product, changeCurrentProduct } = props;
-  let height, width, mouseMove;
+  let height = useRef(null);
+  let width = useRef(null);
+  let mouseMove;
 
   useEffect(() => {
     const product = productCard
       ? productCard.current.getBoundingClientRect()
       : null;
-    height = product ? product.height : null;
-    width = product ? product.width : null;
+    height.current = product ? product.height : null;
+    width.current = product ? product.width : null;
   }, [productCard]);
 
   const rotateCard = () => {
     let event = mouseMove;
     const product = productCard.current.getBoundingClientRect();
-    const offsetX = event.clientX - product.x;
-    const offsetY = event.clientY - product.y;
-
+    const offsetX = event.clientX - product.x - width.current / 2;
+    const offsetY = event.clientY - product.y - height.current / 2;
+    console.log(offsetY);
     productCard.current.style.transform =
-      "rotateX(" +
-      -(offsetY - height / 2) / 5 +
-      "deg)" +
-      "rotateY(" +
-      (offsetX - height / 2) / 5 +
-      "deg)";
+      "rotateX(" + -offsetY / 5 + "deg)" + "rotateY(" + offsetX / 5 + "deg)";
   };
 
-  const throttleRotate = throttle(rotateCard, 20);
+  // const throttleRotate = throttle(rotateCard, 20);
 
   return (
     <div
@@ -62,7 +60,7 @@ export default memo(function Product(props) {
         mouseMove = event;
         rotateCard();
       }}
-      onMouseOut={() => productCard.current.style.transform = "rotate(0)"}
+      onMouseOut={() => (productCard.current.style.transform = "rotate(0)")}
     >
       <div className={styles.product__buttons__wrapper}>
         <button
@@ -70,18 +68,18 @@ export default memo(function Product(props) {
           className={styles.blank__button}
           onClick={() => changeCurrentProduct(product)}
         >
-          <img src={editImage} width="20px"></img>
+          <img src={editImage} width="20px" alt=""></img>
         </button>
         <button
           className={styles.blank__button}
           onClick={() => dispatch(deleteProduct(product))}
         >
-          <img src={trashCan} width="20px"></img>
+          <img src={trashCan} width="20px" alt=""></img>
         </button>
       </div>
       <figure>
         <div className={styles.product__image}>
-          <img src={product.img} width="auto" height="100px" />
+          <img src={product.img} width="auto" height="100px" alt="" />
         </div>
         <figcaption>
           <div>{product.name}</div>

@@ -12,12 +12,17 @@ export function CartProduct(props) {
 
   return (
     <div className={styles.cart}>
-      <img src={product.img} height="100px"></img>
+      <img src={product.img} height="100px" alt=""></img>
       <button
         className={styles.blank__button}
         onClick={() => dispatch(removeFromCart(product))}
       >
-        <img src={trashCan} width="20px" style={{ marginBottom: "80px" }}></img>
+        <img
+          alt=""
+          src={trashCan}
+          width="20px"
+          style={{ marginBottom: "80px" }}
+        ></img>
       </button>
       <div>
         <div>{product.name}</div>
